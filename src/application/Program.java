@@ -1,9 +1,11 @@
 package application;
 
 import java.text.ParseException;
+import java.util.List;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.entities.Department;
 import model.entities.Seller;
 
 public class Program {
@@ -16,7 +18,12 @@ public class Program {
 		Seller seller = sellerDao.findById(3);
 		//Seller seller = new Seller(21, "Bob", "bob@gmail.com", new Date(), 3000.0, obj);
 		
-		System.out.println("=== TEST 1: seller findById ===");
+		System.out.println("=== TEST 1: seller findById ====");
 		System.out.println(seller);
+		
+		System.out.println("\n=== TEST 2: seller findByDepartment ====");
+		Department department = new Department(2, null);
+		List<Seller> list = sellerDao.findByDepartment(department);
+		list.forEach(System.out::println);
 	}
 }
